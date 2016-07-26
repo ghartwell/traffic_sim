@@ -1,11 +1,4 @@
-# File: TorBot.py
-# Version: 0.1.3
-# Date: 2015-02-04
-
-# CHANGE FILE
-# 2015-01-18 Initial file creation
-# 2015-02-01 Enabled program to access redirect commands, pycurl.FOLLOWLOCATION, 1
-# 2015-02-04 Enabled error logging functions
+# File: traffic_sim.py
 
 #! /usr/bin/env python
 import random, pycurl, time, re, datetime
@@ -13,10 +6,10 @@ from StringIO import StringIO
 from stem import Signal
 from stem.control import Controller
 
-url_list = open('url_list.txt').read().splitlines()
-ref_list = open('ref_list.txt').read().splitlines()
-ua_list = open('ua_list.txt').read().splitlines()
-tor_list = open('tor_list.txt').read().splitlines()
+url_list = open('var_lists/url_list.txt').read().splitlines()
+ref_list = open('var_lists/ref_list.txt').read().splitlines()
+ua_list = open('var_lists/ua_list.txt').read().splitlines()
+tor_list = open('var_lists/tor_list.txt').read().splitlines()
 
 def new_tor_id(tor_host, tor_control_port, tor_password):
    with Controller.from_port(address = tor_host, port = tor_control_port) as tor_controller:
@@ -26,7 +19,7 @@ def new_tor_id(tor_host, tor_control_port, tor_password):
 def write_log_entry(log_entry = "N/A", log_name = "error_log.txt", write_mode = "a"):
    dt = datetime.datetime.now()
    # line_item = str(dt) + " " + log_entry + "\n"
-   #line_item = str(dt), " ", log_entry, "\n"
+   # line_item = str(dt), " ", log_entry, "\n"
    # line_item = ' '.join(dt, ', ', log_entry, "\n")
    # line_item = ''.join(str(dt), ", ", log_entry, "\n")
    # line_item = ''.join(line_item)
@@ -94,7 +87,7 @@ def tor_attack(no_of_attack_sessions = 100, attack_wait_from = 10, attack_wait_t
 
             attack_failure = attack_failure + 1
          
-         #tor_ip, tor_port = current_tor.split(':')
+         # tor_ip, tor_port = current_tor.split(':')
          # new_tor_id(tor_ip, 9051)         
 
       # effective_attack = attack_failure / (attack_failure + current_attack) 
