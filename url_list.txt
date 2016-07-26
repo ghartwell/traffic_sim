@@ -1,2 +1,0 @@
-http://www.jamesclayton.net/test/xff.php?1
-http://www.jamesclayton.net/test/xff.php?2
